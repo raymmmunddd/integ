@@ -32,7 +32,7 @@ composer install
 
 php artisan storage:link
 
-php artisan queue:work
+php artisan queue:work (if pause go new terminal and skip this part)
 
 php artisan serve
 
