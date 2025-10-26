@@ -1,0 +1,643 @@
+:root {
+  --background-color: #FFFCFB;
+  --sub-white: #E5E1DA;
+  --main-color: #75BDE5;
+  --sub-color: #85C3E8;
+}
+
+.profile-page {
+  padding-left: 130px;
+  padding-top: 30px;
+  margin-bottom: 50px;
+}
+
+h1 {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+/* Container to center the form */
+.container {
+  width: 90%;
+  padding: 10px;
+}
+
+.edit-profile-container {
+  padding: 30px;
+  background: var(--background-color);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  font-family: sans-serif;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: black;
+  font-weight: 600;
+}
+
+.specialization {
+  width: 100%;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-row.single {
+  flex-direction: column;
+}
+
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #444;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-color: transparent;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--main-color);
+  box-shadow: 0 0 6px rgba(74,144,226,0.3);
+  outline: none;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Availability box */
+.availability-box {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  background: var(--background-color);
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.availability-box .days {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.availability-box .days label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  background: transparent;
+  transition: background 0.2s;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.availability-box .days label:hover {
+  background: rgba(117, 189, 229, 0.1);
+}
+
+.availability-box .days input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  min-height: 18px;
+  margin: 0;
+  cursor: pointer;
+  accent-color: var(--main-color);
+}
+
+.time-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.availability-box .time {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.availability-box .time label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: normal;
+  font-size: 14px;
+}
+
+.availability-box .time input[type="time"] {
+  width: 180px;
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* Upload Box Styling */
+.upload-box {
+  border: 2px dashed var(--main-color);
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  background: #f5fbff;
+  transition: all 0.3s;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-box:hover {
+  background: #e6f5ff;
+  border-color: var(--sub-color);
+}
+
+.upload-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.upload-icon {
+  font-size: 4rem;
+  color: #666;
+}
+
+.upload-placeholder p {
+  color: #666;
+  margin: 0;
+  font-size: 14px;
+}
+
+.photo-preview {
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.photo-preview img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: contain;
+  max-height: 300px;
+}
+
+.file-info {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem;
+  background: #f9f9f9;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.file-info span {
+  color: #333;
+  font-size: 14px;
+  word-break: break-all;
+}
+
+.cancel-file-btn {
+  padding: 0.4rem 0.8rem;
+  background: transparent;
+  color: #ff4444;
+  border: 1px solid #ff4444;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.cancel-file-btn:hover {
+  background: #ff4444;
+  color: white;
+}
+
+.save-btn {
+  margin-top: 15px;
+  padding: 12px;
+  background: var(--main-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.save-btn:hover {
+  background: #69a8cb;
+}
+
+.save-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Feedback Messages */
+.error-message {
+  color: #d32f2f;
+  background: #ffebee;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  border-left: 4px solid #d32f2f;
+  font-size: 14px;
+}
+
+.success-message {
+  color: #2e7d32;
+  background: #e8f5e9;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  border-left: 4px solid #2e7d32;
+  font-size: 14px;
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+/* Tablets and smaller desktops (900px) */
+@media (max-width: 900px) {
+  .profile-page {
+    padding-left: 130px;
+    padding-top: 24px;
+  }
+
+  .container {
+    width: 95%;
+  }
+
+  .edit-profile-container {
+    padding: 24px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  .form-row {
+    gap: 16px;
+  }
+
+  .availability-box .time input[type="time"] {
+    width: 160px;
+  }
+}
+
+/* Small tablets (700px) */
+@media (max-width: 700px) {
+  .profile-page {
+    padding-left: 60px;
+    padding-top: 22px;
+  }
+
+  .container {
+    width: 90%;
+  }
+
+  .edit-profile-container {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 26px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .form-group {
+    width: 100%;
+  }
+
+  .availability-box .days {
+    gap: 10px;
+  }
+
+  .availability-box .time {
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .availability-box .time input[type="time"] {
+    width: 140px;
+  }
+
+  .upload-box {
+    min-height: 180px;
+    padding: 1.5rem;
+  }
+
+  .upload-icon {
+    font-size: 3rem;
+  }
+
+  .save-btn {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+/* Large phones (425px) */
+@media (max-width: 425px) {
+  .profile-page {
+    padding-left: 72px;
+    padding-top: 18px;
+  }
+
+  h1 {
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+
+  h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .container {
+    padding: 8px;
+  }
+
+  .edit-profile-container {
+    padding: 16px;
+  }
+
+  .edit-form {
+    gap: 10px;
+  }
+
+  .form-group label {
+    font-size: 13px;
+    margin-bottom: 5px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .availability-box {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .availability-box .days {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
+    gap: 8px;
+  }
+
+  .availability-box .days label {
+    justify-content: center;
+    padding: 8px 6px;
+    font-size: 13px;
+    gap: 6px;
+  }
+
+  .availability-box .days input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    min-height: 16px;
+  }
+
+  .availability-box .time input[type="time"] {
+    width: 120px;
+  }
+
+  .upload-box {
+    min-height: 150px;
+    padding: 1.25rem;
+  }
+
+  .upload-icon {
+    font-size: 2.5rem;
+  }
+
+  .upload-placeholder p {
+    font-size: 13px;
+  }
+
+  .save-btn {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+/* Standard phones (375px) */
+@media (max-width: 375px) {
+  .profile-page {
+    padding-left: 72px;
+    padding-top: 14px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  h2 {
+    font-size: 16px;
+  }
+
+  .edit-profile-container {
+    padding: 14px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 7px;
+    font-size: 13px;
+  }
+
+  .availability-box .days {
+    grid-template-columns: repeat(auto-fit, minmax(64px, 1fr));
+    gap: 6px;
+  }
+
+  .availability-box .days label {
+    font-size: 12.5px;
+    padding: 7px 6px;
+  }
+
+  .availability-box .days input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    min-width: 15px;
+    min-height: 15px;
+  }
+
+  .availability-box .time input[type="time"] {
+    width: 110px;
+  }
+
+  .upload-box {
+    min-height: 130px;
+    padding: 1rem;
+  }
+
+  .upload-icon {
+    font-size: 2rem;
+  }
+
+  .save-btn {
+    padding: 9px;
+    font-size: 13px;
+  }
+}
+
+/* Small phones (320px) */
+@media (max-width: 320px) {
+  .profile-page {
+    padding-left: 68px;
+    padding-top: 12px;
+    margin-bottom: 40px;
+  }
+
+  h1 {
+    font-size: 18px;
+  }
+
+  h2 {
+    font-size: 15px;
+  }
+
+  .container {
+    width: calc(100% - 80px);
+    padding: 8px;
+  }
+
+  .edit-profile-container {
+    padding: 12px;
+  }
+
+  .edit-form {
+    gap: 8px;
+  }
+
+  .form-group label {
+    font-size: 12px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 6px;
+    font-size: 13px;
+  }
+
+  .availability-box {
+    padding: 10px;
+  }
+
+  .availability-box .days {
+    grid-template-columns: repeat(auto-fit, minmax(56px, 1fr));
+    gap: 6px;
+  }
+
+  .availability-box .days label {
+    font-size: 12px;
+    padding: 6px 4px;
+  }
+
+  .availability-box .days input[type="checkbox"] {
+    width: 14px;
+    height: 14px;
+    min-width: 14px;
+    min-height: 14px;
+  }
+
+  .availability-box .time input[type="time"] {
+    width: 100%;
+    max-width: 120px;
+  }
+
+  .upload-box {
+    min-height: 120px;
+    padding: 0.75rem;
+  }
+
+  .upload-icon {
+    font-size: 1.75rem;
+  }
+
+  .upload-placeholder p {
+    font-size: 12px;
+  }
+
+  .save-btn {
+    padding: 8px;
+    font-size: 13px;
+  }
+
+  .file-info {
+    padding: 0.5rem;
+  }
+
+  .file-info span {
+    font-size: 12px;
+  }
+
+  .cancel-file-btn {
+    padding: 0.3rem 0.6rem;
+    font-size: 12px;
+  }
+}

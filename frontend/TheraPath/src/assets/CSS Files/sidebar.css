@@ -1,0 +1,297 @@
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 100%;
+  background: #5981a9;
+  color: white;
+  padding: 20px 10px;
+  transition: width 0.3s ease;
+  overflow: hidden;
+  z-index: 999 !important; /* 🔥 sidebar stays on top of overlay */
+}
+
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Menu */
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.title {
+  font-size: 20px;
+  padding-left: 10px;
+}
+
+/* Sidebar Items */
+.sidebar li {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 12px;
+  border-radius: 6px;
+  transition: all 0.15s ease-in-out;
+}
+
+.sidebar li:hover {
+  background-color: #4b6d8f;
+}
+
+.sidebar li i {
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.logout {
+  margin-top: -100%;
+}
+
+/* Closed Sidebar */
+.sidebar-closed {
+  width: 70px;
+}
+
+.sidebar-closed li {
+  justify-content: center;
+}
+
+.sidebar-closed li i {
+  margin: 0;
+}
+
+/* Toggle Button */
+.toggle-btn-inside {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  padding-left: 15px;
+}
+
+.a {
+  text-decoration: none;
+  color: white;
+}
+
+/* Notification Badge */
+.notif-count {
+  position: absolute;
+  top: 3px;
+  right: 52px;
+  background: #dc3545;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.sidebar-closed-badge {
+  top: -5px;
+  right: -1px;
+  transform: scale(0.9);
+}
+
+/* Gray Overlay (Full Coverage) */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
+  opacity: 1;
+  visibility: visible;
+  z-index: 998 !important; /* 🔥 force overlay to be highest */
+}
+
+
+.overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@media (max-width: 700px) {
+  /* compact by default (closed appearance) */
+  .sidebar {
+    background: transparent !important;
+    box-shadow: none;
+    width: 70px;
+    padding: 10px 6px;
+    transition: width 0.2s ease;
+  }
+
+  /* when the sidebar is opened (not .sidebar-closed) show full width and main background */
+  .sidebar:not(.sidebar-closed) {
+    width: 220px;
+    background: #5981a9 !important;
+    padding: 20px 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  }
+
+  /* hide titles, menu text, icons and badge ONLY when the sidebar is closed */
+  .sidebar.sidebar-closed .sidebar-header .title,
+  .sidebar.sidebar-closed .menu,
+  .sidebar.sidebar-closed .menu li span,
+  .sidebar.sidebar-closed .menu li a,
+  .sidebar.sidebar-closed .notif-count {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  /* specifically hide the <i> icons inside the .menu when closed */
+  .sidebar.sidebar-closed .menu li i {
+    display: none !important;
+    visibility: hidden !important;
+    margin: 0;
+  }
+
+  /* ensure items and icons are visible when sidebar is open */
+  .sidebar:not(.sidebar-closed) .sidebar-header .title,
+  .sidebar:not(.sidebar-closed) .menu,
+  .sidebar:not(.sidebar-closed) .menu li span,
+  .sidebar:not(.sidebar-closed) .menu li a,
+  .sidebar:not(.sidebar-closed) .notif-count,
+  .sidebar:not(.sidebar-closed) .menu li i {
+    display: block !important;
+    visibility: visible !important;
+  }
+
+  /* toggle button:
+     - when sidebar is closed (transparent background) show main color for visibility
+     - when sidebar is open (dark bg) show contrasting color (white) */
+  .toggle-btn-inside {
+    display: block !important;
+    color: #5981a9 !important; /* main color when closed */
+    font-size: 22px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding-left: 6px;
+  }
+
+  .sidebar:not(.sidebar-closed) .toggle-btn-inside {
+    color: #ffffff !important; /* contrasting color when open */
+  }
+
+  /* when closed on small screens keep compact width */
+  .sidebar-closed {
+    width: 70px;
+  }
+
+  /* hide logout icon when sidebar is closed; show when open */
+  .sidebar.sidebar-closed .logout i {
+    display: none !important;
+    visibility: hidden !important;
+    margin: 0;
+  }
+
+  .sidebar:not(.sidebar-closed) .logout i {
+    display: block !important;
+    visibility: visible !important;
+    margin-right: 10px;
+  }
+
+  /* hide logout content and remove its background when sidebar is closed */
+  .sidebar.sidebar-closed .logout,
+  .sidebar.sidebar-closed .logout:hover {
+    background: transparent !important;
+    box-shadow: none !important;
+    pointer-events: none; /* prevents hover/bg from appearing while hidden */
+  }
+
+  .sidebar.sidebar-closed .logout i,
+  .sidebar.sidebar-closed .logout span {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  /* restore logout appearance and interactivity when sidebar is open */
+  .sidebar:not(.sidebar-closed) .logout {
+    pointer-events: auto;
+    background: transparent; /* keep default; hover will apply via .sidebar li:hover */
+  }
+
+  .sidebar:not(.sidebar-closed) .logout i,
+  .sidebar:not(.sidebar-closed) .logout span {
+    display: inline-block !important;
+    visibility: visible !important;
+  }
+}
+
+/* Tighten sidebar for very small screens */
+@media (max-width: 320px) {
+  /* collapsed sidebar (default on very small screens) */
+  .sidebar {
+    width: 56px !important;   /* even narrower */
+    padding: 6px 6px !important;
+    background: transparent !important;
+    box-shadow: none;
+    transition: width 0.16s ease;
+  }
+
+  .sidebar:not(.sidebar-closed) {
+    width: 190px !important;
+    padding: 10px 8px !important;
+    background: #5981a9 !important;
+  }
+
+  .sidebar-header .title {
+    font-size: 14px;
+    padding-left: 6px;
+  }
+
+  .a { font-size: 12px; }
+
+  .sidebar li {
+    padding: 6px;             /* minimize item height */
+    margin: 5px 0;
+    font-size: 12px;
+  }
+
+  .sidebar li i {
+    margin-right: 6px;
+    font-size: 16px;          /* smaller icons */
+  }
+
+  /* hide content when closed (keeps toggle visible) */
+  .sidebar.sidebar-closed .sidebar-header .title,
+  .sidebar.sidebar-closed .menu,
+  .sidebar.sidebar-closed .menu li span,
+  .sidebar.sidebar-closed .menu li a,
+  .sidebar.sidebar-closed .notif-count,
+  .sidebar.sidebar-closed .logout {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  /* toggle button */
+  .toggle-btn-inside {
+    font-size: 18px !important;
+    padding-left: 6px !important;
+    color: #5981a9 !important;
+  }
+  .sidebar:not(.sidebar-closed) .toggle-btn-inside {
+    color: #ffffff !important;
+  }
+
+  /* ensure overlay stacking */
+  .overlay { z-index: 10; }
+}

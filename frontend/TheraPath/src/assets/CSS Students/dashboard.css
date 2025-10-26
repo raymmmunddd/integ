@@ -1,0 +1,808 @@
+:root {
+  --background-color: #FFFCFB;
+  --sub-white: #f9f9f9;
+  --main-color: #75BDE5;
+  --sub-color: #85C3E8;
+}
+
+body {
+  background-color: var(--sub-white);
+}
+
+/* MAIN  */
+
+.main-container {
+    padding-left: 130px;
+    padding-top: 30px;
+    margin-bottom: 50px;
+}
+
+.hello-title {
+    font-size: 20px;
+    color: #afafaf;
+    font-weight:600;
+}
+
+.separation-title-time {
+  display: flex;
+  justify-content: space-between; /* para automatic space sa pagitan */
+  align-items: center;
+  width: 100%; /* para kumalat hanggang full width */
+}
+
+.welcome-title {
+  padding-bottom: 15px;
+}
+
+.time-title {
+  padding-right: 45px;
+  font-size: 16px;
+  color: #666;
+}
+
+.whole-container {
+  display: flex;
+  flex-direction: row;
+  column-gap: 90px;
+}
+
+.container-separation {
+display: flex;
+flex-direction: column;
+width: 780px;
+}
+
+.container-reminder {
+  width: 780px;
+  height: 362px;
+background: linear-gradient(15deg, rgba(255, 252, 251, 1) 0%, rgba(133, 195, 232, 1) 
+59%, rgba(117, 189, 229, 1) 100%);
+  border-radius: 20px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 40px;
+}
+
+.reminder-title {
+  font-size: 13px;
+  color: var(--background-color);
+  font-weight: 400;
+}
+
+.reminder-text {
+  font-size: 27px;
+  width: 400px;
+}
+
+.check-btn {
+  width: 136px;
+  height: 35px;
+  font-size: 12px;
+  text-align: center;
+  padding-top: 8px;
+  background-color: var(--main-color);
+  color: var(--background-color);
+  border-radius: 6px;
+  text-decoration: none;
+  transition: .15s ease-in-out background-color,
+  .15s ease-in-out color;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.09);
+
+}
+
+.check-btn:hover {
+  background-color: var(--sub-color);
+  cursor: pointer;
+}
+
+/* SESSION TRACK */ 
+.sessions-separation { /* to be revised */
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.session-container {
+  display: flex;
+  align-items: center; /* vertical alignment ng icon at text */
+  background-color: var(--background-color); /* example background */
+  border-radius: 10px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.09);
+  padding: 20px;
+  width: 310px;  /* match sa screenshot */
+  height: 96px;  /* match sa screenshot */
+}
+
+#session-icon {
+  font-size: 40px;
+  color: #555; /* icon color */
+}
+
+.session-texts {
+  margin-left: 20px; /* space between icon and texts */
+}
+
+.session-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.session-details {
+  font-size: 32px;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* DYNAMIC CALENDAR */
+.calendar {
+  margin-top: 40px;
+  width: 780px;
+  background-color: var(--background-color);
+  border-radius: 15px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.09);
+
+}
+.calendar-header {
+  display: flex;
+  background-color: var(--background-color);
+  justify-content: space-between;
+  align-items: center;
+  margin: 15px 0;
+}
+.weekdays, .dates {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+}
+.weekdays div {
+  font-weight: bold;
+  color: var(--background-color);
+  padding: 8px 0;
+  background: var(--main-color);
+}
+.date {
+  border: 1px solid var(--sub-white);
+  padding: 12px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.date:hover {
+  background: var(--sub-color);
+}
+.date.today {
+  background: #e74c3c;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+}
+.date.hasEvent {
+  background: var(--main-color);
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+}
+
+.calendar-button {
+  width: 90px;
+  height: 50px;
+  font-size: 20px;
+  margin: 20px;
+  border-radius: 10px;
+  border-style: none;
+  cursor: pointer;
+  background-color: var(--main-color);
+  color: var(--background-color);
+  transition: .15s ease-in-out background-color,
+  .15s ease-in-out color;
+}
+
+.calendar-button:hover {
+  background-color: var(--sub-color);
+  color: white;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(44, 62, 80, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease;
+  z-index: 1000;
+}
+.modal {
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  width: 400px;
+  max-height: 70vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  animation: slideIn 0.3s ease;
+}
+.modal h3 {
+  margin-bottom: 15px;
+  color: #34495e;
+}
+.modal ul {
+  list-style: none;
+  padding: 0;
+}
+.modal li {
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  background: #f8f9fa;
+  display: flex;
+  align-items: center;
+}
+.modal li .time {
+  font-weight: bold;
+  margin-right: 8px;
+  color: #2980b9;
+}
+.close-btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  border: none;
+  background: #e74c3c;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.close-btn:hover {
+  background: #c0392b;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; } 
+  to { opacity: 1; }
+}
+@keyframes slideIn {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* SELF-JOURNAL */
+
+.self-journal {
+  width: 465px;
+  height: 420px;
+  background-color: var(--background-color);
+  border-radius: 20px;
+}
+
+.journal-header {
+  background-color: var(--main-color);
+  width: 465px;
+  height: 50px;
+  border-radius: 20px 20px 0px 0;
+  padding: 15px 20px;
+
+}
+.journal-title {
+  font-size: 16px;
+  color: black;
+  font-weight: 600;
+}
+
+textarea {
+  background: var(--background-color);
+  resize: none;
+  padding: 15px 20px;
+  width: 464px;  
+  height: 370px; 
+  border-radius: 0px 0px 20px 20px;
+  outline: none;
+  border: none;
+  color: black;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.09);
+
+}
+
+.save-journal {
+  width: 100%;
+  height: 45px;
+  border-radius: 8px;
+  border-style: none;
+  background-color: var(--main-color);
+  color: var(--background-color);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+  cursor: pointer;
+  transition: 0.15s all ease-in-out;
+}
+
+.save-journal:hover {
+  background-color: var(--sub-color);
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 1500px) {
+
+  .main-container {
+display: flex;
+flex-direction: column;
+margin-left: -40px;
+  }
+
+  .whole-container {
+    flex-direction: column;
+    align-items: center;
+    row-gap: 40px;
+  }
+}
+
+@media (max-width: 900px) {
+
+  .main-container {
+    margin: 0 auto;
+  }
+
+  .separation-title-time {
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 10px;
+  }
+
+  /* ✅ Unified & responsive session container width */
+  .sessions-separation {
+    flex-direction: column;
+    align-items: center;
+    row-gap: 20px;
+    width: 100%;
+  }
+
+  .session-container {
+    width: 90%;          /* full width for responsiveness */
+    margin-right: 70px;      /* center it horizontally */
+  }
+
+  .time-title {
+    padding-right: 0;
+  }
+
+  .container-separation,
+  .container-reminder,
+  .calendar
+  {
+    width: 90%;          /* consistent responsive layout */
+  }
+
+  .self-journal {
+    margin-right: 60px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    max-width: 600px; /* Optional max-width for better appearance */
+  }
+  
+  .journal-header {
+    width: 100%;
+  }
+
+  textarea {
+    width: 100%;
+    height: 400px; /* Adjust height as needed */
+  }
+
+    .save-journal {
+    width: 89%;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .main-container {
+    padding-left: 40px;
+    margin: 0;
+  }
+
+  .container-reminder {
+    max-width: 90%;
+    height: 300px; /* Allow height to adjust based on content */
+  }
+
+  .reminder-title {
+    font-size: 12px;
+  }
+
+  .reminder-text {
+    font-size: 20px;
+    width: 60%; /* Allow text to take full width */
+  }
+
+  .separation-title-time {
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 10px;
+  }
+
+  .time-title {
+    padding-right: 0;
+  }
+
+  .container-separation, .container-reminder, .calendar, .self-journal {
+    width: 100%;
+  }
+
+  .sessions-separation {
+    flex-direction: column;
+    align-items: center;
+    row-gap: 20px;
+  }
+
+  .session-container {
+    margin-left: 20px;
+    width: 89%          /* full width for responsiveness */
+  }
+
+  .calendar {
+    max-width: 650px;
+    margin-left: 10px;
+    margin-bottom: 30px;
+  }
+
+  .calendar h2 {
+    font-size: 18px;
+  }
+
+  .calendar-button {
+    width: 70px;
+    height: 40px;
+    font-size: 16px;
+    margin: 10px;
+  }
+
+  .self-journal {
+    margin-right: 60px;
+    margin-bottom: 30px;
+    margin-top: -40px;
+    width: 640px; /* Optional max-width for better appearance */
+  }
+  
+  .journal-header {
+    width: 100%;
+  }
+
+  textarea {
+    width: 100%;
+    height: 400px; /* Adjust height as needed */
+  }
+
+  .save-journal {
+    width: 92%;
+  }
+}
+
+/* Fine-grained small-screen adjustments (reference breakpoints: 425, 375, 320) */
+@media (max-width: 426px) {
+  .main-container {
+    margin-left: 42px; /* leave space for closed sidebar */
+    padding: 10px;
+  }
+
+  .hello-title { 
+    font-size: 16px; 
+  }
+
+  .welcome-title { 
+    font-size: 22px; 
+  }
+
+  .whole-container {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .container-reminder {
+    height: 50%; /* Allow height to adjust based on content */
+  }
+
+  .container-separation,
+  .container-reminder,
+  .calendar,
+  .self-journal {
+    width: 120%;
+  }
+
+  .container-reminder {
+    padding: 16px;
+    height: auto;
+  }
+
+  .reminder-text { 
+    font-size: 18px; 
+    width: 50%; 
+    padding-top: 20px;
+    padding-bottom: 50px;
+  }
+
+  .reminder-title { font-size: 12px; }
+
+
+  .check-btn {
+    width: 120px;
+    height: 32px;
+    font-size: 11px;
+  }
+  .sessions-separation { 
+    gap: 12px; 
+  }
+
+  .session-container {
+    width: 86%;
+    margin-right: 60px;
+    padding: 12px;
+    height: auto;
+  }
+
+  .session-details { 
+    font-size: 20px; 
+  }
+
+  #session-icon { 
+    font-size: 28px; 
+  }
+
+  .calendar {
+    margin-right: 40px;
+    max-width: 100%;
+    width: 88%;
+  }
+  .calendar .weekdays div { 
+    padding: 6px 0; 
+    font-size: 0.78rem; 
+  }
+  .date { 
+    padding: 8px; 
+    font-size: 0.82rem; 
+    min-height: 30px; 
+  }
+
+  .calendar-button { width: 60px; height: 36px; font-size: 14px; }
+
+  .self-journal { 
+    width: 370px; 
+    margin-top: 0; 
+    margin-right: 30px;
+    height: 100%;
+  }
+  .journal-header { 
+    width: 100%; 
+  }
+  textarea { 
+    width: 100%; 
+    height: 220px; 
+  }
+
+  .modal {
+    scale: 0.8;
+  }
+
+  .save-journal {
+    margin-top: -50px;
+  }
+}
+
+@media (max-width: 375px) {
+  .main-container {
+    margin-left: 70px;
+    padding: 8px;
+  }
+
+  .reminder-text { font-size: 16px; }
+  .reminder-title { font-size: 11px; }
+
+  .session-container { padding: 10px; }
+  .session-details { font-size: 18px; }
+  #session-icon { font-size: 24px; }
+
+  .calendar .weekdays div { font-size: 0.75rem; padding: 5px 0; }
+  .date { padding: 7px; font-size: 0.78rem; min-height: 28px; }
+
+  .calendar-button { width: 56px; height: 34px; font-size: 13px; }
+
+   .self-journal { 
+    width: 300px; 
+    margin-top: -20px; 
+    margin-right: 35px;
+  }
+  .journal-header { 
+    width: 100%; 
+  }
+  textarea { 
+    width: 100%; 
+    height: 220px; 
+  }
+
+  .journal-title {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 320px) {
+  .main-container {
+    margin-left: 30px;
+    padding: 6px;
+  }
+
+  .calendar {
+    margin-left: 5px;
+    margin-top: 20px;
+  }
+
+  .welcome-title { 
+    font-size: 18px; 
+  }
+  .time-title { 
+    font-size: 13px; 
+    padding-right: 0; 
+  }
+
+  .reminder-text { 
+    font-size: 12px;
+    width: 100%;
+    margin-top: 20px; 
+  }
+  .reminder-title { 
+    font-size: 10px; 
+  }
+
+  .check-btn { 
+    width: 80px; 
+    height: 30px; 
+    font-size: 8px; 
+  }
+
+  .session-container { 
+    width: 96%; 
+    padding: 8px; 
+    margin-top: -20px;
+  }
+
+  .session-title { 
+    font-size: 10px; 
+  }
+  .session-details { 
+    font-size: 16px; 
+  }
+  #session-icon { 
+    font-size: 22px; 
+  }
+
+  .calendar h2 {
+    font-size: 10px;
+  }
+
+  .calendar .calendar-button {
+    width: 42px;
+    height: 25px;
+    font-size: 12px;
+    margin: 10px 5px;
+  }
+
+  .date { 
+    padding: 6px; 
+    font-size: 0.72rem; 
+    min-height: 26px; 
+  }
+  .calendar-button { 
+    width: 52px; 
+    height: 30px; 
+    font-size: 12px; 
+  }
+
+  .self-journal { 
+    width: 270px;
+    margin-right: 30px; 
+    height: 100%;
+  }
+
+  .journal-header { 
+    width: 100%; 
+    height: 40px;
+  }
+
+  .journal-title { 
+    font-size: 10px;
+  }
+
+  .sessions-separation {
+    gap: 30px;
+    width: 90%;
+    margin-left: 20px;
+  }
+
+  textarea { 
+    height: 180px; 
+  }
+
+  .save-journal {
+    width: 270px;
+    height: 35px;
+    font-size: 12px;
+  }
+}
+
+.loading-state {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.1rem;
+  color: #666;
+}
+
+.journal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.appointment-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.5rem;
+  border-left: 3px solid #3b82f6;
+  margin: 0.5rem 0;
+}
+
+.appointment-item .time {
+  font-weight: 600;
+  color: #1e40af;
+}
+
+.appointment-item .title {
+  font-size: 1rem;
+  color: #1f2937;
+}
+
+.appointment-item .therapist {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.appointment-item .status {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.25rem;
+  width: fit-content;
+}
+
+.status-pending {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.status-approved {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.status-completed {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.date.past {
+  color: #999;
+  opacity: 0.5;
+}
+
+.date.past.hasEvent {
+  color: #aaa;
+}

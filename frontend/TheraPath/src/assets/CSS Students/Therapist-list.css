@@ -1,0 +1,792 @@
+:root {
+  --background-color: #FFFCFB;
+  --sub-white: #FAF9F6;
+  --main-color: #75BDE5;
+  --sub-color: #85C3E8;
+}
+
+body {
+  background-color: var(--sub-white);
+}
+/* Main layout */
+main {
+    padding-left: 130px;
+    padding-top: 30px;
+    margin-bottom: 100px;
+}
+
+.title-search-separation {
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.doctors-title {
+  margin-bottom: 20px;
+}
+
+.search {
+  width: 250px;
+  padding: 10px 10px 10px 35px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-right: 60px;
+}
+
+.search-icon {
+  position: absolute;
+  top: 40%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #777;
+  pointer-events: none;
+}
+
+.search:focus {
+  outline: none;
+  border-color: #89A8B2;
+}
+
+.specialization {
+  width: 250px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  padding-left: 5px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  margin-bottom: 50px;
+  cursor: pointer;
+}
+
+/* LIST DOCTORS */
+.lists-doctors-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  column-gap: 215px;
+  row-gap: 50px;
+  margin-right: 60px;
+}
+
+.doctor-card {
+  width: 300px;
+  height: 460px;
+  background-color: var(--background-color);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.09);
+  border-radius: 10px;
+  padding: 20px 10px;
+}
+
+img {
+  width: 280px;
+  height: 230px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.doctors-name {
+  font-size: 19px;
+}
+
+.specialization-subheading {
+  font-size: 12px;
+}
+
+.button-arrange {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 70px;
+}
+
+.appointment-button {
+  width: 250px;
+  height: 45px;
+  border-radius: 8px;
+  border: none;
+  background-color: var(--main-color);
+  color: var(--background-color);
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+}
+
+.appointment-button:hover {
+  background-color: #6aabce;
+}
+
+.appointment-button:active {
+  opacity: 0.7;
+}
+
+/* MODAL BACKDROP */ 
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(88, 88, 88, 0.7);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px; /* allow spacing on small screens */
+  box-sizing: border-box;
+}
+
+/* MODAL CONTENT */
+.modal-content {
+  background: white;
+  width: 900px;
+  max-width: 100%; /* responsive */
+  min-width: 320px; /* minimum width for mobile */
+  height: auto; /* adjust height based on content */
+  padding: 30px;
+  border-radius: 8px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* allow wrapping on small screens */
+}
+
+.x-button {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.p-assigned {
+  font-weight: 500;
+  text-align: start;
+}
+
+.modal-doctor-card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  background: var(--main-color);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  gap: 20px;
+  box-sizing: border-box;
+}
+
+.avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.doctor-info {
+  flex: 1 1 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--background-color);
+}
+
+.doctor-info h3 {
+  margin: 0;
+  font-weight: bold;
+  text-align: start;
+  padding-top: 10px;
+}
+
+.role {
+  margin: 3px 0 10px;
+  color: var(--background-color);
+  text-align: start;
+  padding-bottom: 15px;
+}
+
+
+
+/* Availability */
+.availability {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; /* stack on small screens */
+  gap: 10px;
+  width: 100%;
+}
+
+.days, .times {
+  flex: 1 1 120px; /* shrink to minimum of 120px */
+  text-align: start;
+  color: var(--background-color);
+}
+
+.times {
+  display: flex;
+  flex-wrap: wrap; /* allow times to wrap to next line */
+  gap: 5px;        /* spacing between time blocks */
+  justify-content: center; /* center the times */
+  text-align: center;
+  padding-left: 0; /* remove previous padding */
+}
+
+.days p,
+.times p {
+  margin: 0 0 5px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.times {
+    display: block;
+}
+
+.times span {
+  text-align: left;
+}
+
+.tag {
+  display: inline-block;
+  background: var(--background-color);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.09);
+  padding: 4px 10px;
+  border-radius: 15px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgb(47, 47, 47);
+  margin: 5px 5px 0 0;
+  transition: .15s ease-in-out all;
+}
+
+.tag:hover {
+  background: #62a4c7;
+  color: var(--background-color);
+}
+
+.times span {
+  width: 50px;         /* fixed width for each time */
+  font-size: 13px;
+}
+
+/* Form actions */
+.form-actions {
+  margin-top: auto;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-wrap: wrap; /* responsive for small screens */
+}
+
+.confirm-btn,
+.cancel-btn {
+  padding: 10px 20px;
+  background: var(--main-color);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.15s ease-in-out;
+}
+
+.confirm-btn:hover,
+.cancel-btn:hover {
+  background-color: #6aacd0;
+}
+
+
+/* Container for the form fields */
+.appointment-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+
+/* Common style for input and select */
+.appointment-form input,
+.appointment-form select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+/* Label styling */
+.appointment-form label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  display: block;
+  font-size: 14px;
+}
+
+label {
+  text-align: start;
+}
+
+/* Dropdown arrow on select */
+.appointment-form select {
+  appearance: none; /* remove default arrow */
+  background-size: 12px;
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 1320px) {
+  .lists-doctors-container {
+    flex-direction: column;
+    row-gap: 30px;
+  }
+
+  .title-search-separation {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+
+  .modal-content {
+    scale: 0.9;
+  }
+}
+
+/* Responsive modal sizing for smaller screens */
+@media (max-width: 900px) {
+  /* make form single-column on narrower screens to avoid overflow */
+  .appointment-form {
+    grid-template-columns: 1fr !important;
+    gap: 12px;
+  }
+
+  .appointment-form input,
+  .appointment-form select,
+  .appointment-form textarea {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important; /* important to override min constraints */
+    box-sizing: border-box !important;
+    overflow-wrap: break-word;
+  }
+
+  .modal-content {
+    overflow-x: hidden; /* prevent horizontal scroll caused by wide form children */
+  }
+}
+
+/* reinforce for smaller breakpoints */
+@media (max-width: 425px) {
+  .appointment-form { grid-template-columns: 1fr !important; }
+  .appointment-form input,
+  .appointment-form select,
+  .appointment-form textarea {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+}
+
+@media (max-width: 375px),
+       (max-width: 320px) {
+  .appointment-form { grid-template-columns: 1fr !important; }
+  .appointment-form input,
+  .appointment-form select,
+  .appointment-form textarea {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+}
+
+/* ==============================
+   Responsive Modal Structure
+   ============================== */
+
+/* ----------- Up to 700px ----------- */
+/* --- 1024px (Large Tablets / Small Laptops) --- */
+@media (max-width: 1024px) {
+  .modal-content {
+    width: 80%;
+    max-width: 800px;
+    padding: 20px;
+    scale: 0.750;
+  }
+
+  .modal-doctor-card {
+    gap: 18px;
+  }
+
+  .doctor-info h3 {
+    font-size: 20px;
+  }
+
+  .role {
+    font-size: 15px;
+  }
+}
+
+/* --- 768px (Tablets) --- */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 80%;
+    max-width: 600px;
+    padding: 18px;
+  }
+
+  .modal-doctor-card {
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .avatar {
+    width: 80px;
+    height: 80px;
+  }
+
+  .doctor-info h3 {
+    font-size: 18px;
+  }
+
+  .role {
+    font-size: 14px;
+  }
+}
+
+/* ========================= MODAL BACKDROP ========================= */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(88, 88, 88, 0.7); /* gray overlay */
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px; /* spacing for small screens */
+  box-sizing: border-box;
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Fade animation for smooth appearance */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ========================= MODAL CONTENT ========================= */
+.modal-content {
+  background: var(--background-color);
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  padding: 24px;
+  max-width: 900px;
+  width: 90%;
+  transition: all 0.3s ease-in-out;
+}
+
+/* ========================= DOCTOR CARD ========================= */
+.modal-doctor-card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  background: var(--main-color);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  gap: 20px;
+  box-sizing: border-box;
+}
+
+.avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.doctor-info {
+  flex: 1 1 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--background-color);
+}
+
+.doctor-info h3 {
+  margin: 0;
+  font-weight: bold;
+  text-align: start;
+  padding-top: 10px;
+}
+
+.role {
+  margin: 3px 0 10px;
+  color: var(--background-color);
+  text-align: start;
+  padding-bottom: 15px;
+}
+
+/* ========================= MEDIA QUERIES ========================= */
+
+/* --- 1024px (Large Tablets / Small Laptops) --- */
+@media (max-width: 1024px) {
+  .modal-content {
+    max-width: 700px;
+    padding: 20px;
+  }
+  .modal-doctor-card {
+    gap: 16px;
+  }
+  .avatar {
+    width: 85px;
+    height: 85px;
+  }
+}
+
+/* --- 768px (Tablets) --- */
+@media (max-width: 768px) {
+  main {
+    padding-left: 50px;
+  }
+.modal-overlay {
+    padding: 14px;
+    height: auto;
+  }
+  .modal-content {
+    max-width: 600px;
+    padding: 18px;
+    border-radius: 12px;
+  }
+  .modal-doctor-card {
+    gap: 14px;
+    padding: 16px;
+  }
+  .avatar {
+    width: 80px;
+    height: 80px;
+  }
+
+  
+  .times p {
+    margin-right: 90px;
+  }
+
+  .times span {
+    margin-right: 120px;
+  }
+
+  .content-header h2 {
+    font-size: 20px;
+  }
+}
+
+/* --- 425px (Phones - balanced layout) --- */
+@media (max-width: 426px) {
+  .modal-overlay {
+    align-items: flex-start; /* so it doesn't overflow top */
+    padding: 12px;
+    height: auto;
+  }
+  .modal-content {
+    max-width: 100%;
+    width: calc(100% - 24px);
+    margin-top: 40px;
+    border-radius: 10px;
+    padding: 14px;
+    height: auto;
+    max-height: 90vh;
+  }
+
+  .modal-doctor-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .content-header h2 {
+    font-size: 16px;
+  }
+
+  .p-assigned {
+    font-size: 14px;
+  }
+
+  .doctor-info {
+    align-items: center;
+  }
+
+  .doctor-info h3 {
+    font-size: 16px;
+    padding-top: 6px;
+  }
+
+  .role {
+    font-size: 13px;
+    padding-bottom: 8px;
+  }
+
+    .times p {
+    margin-right: 20px;
+  }
+
+  .times span {
+    margin-right: 50px;
+  }
+}
+
+/* --- 375px (Smaller Phones) --- */
+@media (max-width: 375px) {
+.modal-overlay {
+    padding: 10px;
+    height: auto;
+  }
+  .modal-content {
+    width: calc(100% - 20px);
+    margin-top: 37px;
+    padding: 12px;
+    scale: 0.930;
+  }
+
+  .modal-doctor-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .avatar {
+    width: 65px;
+    height: 65px;
+  }
+
+  .doctor-info h3 {
+    font-size: 15px;
+  }
+
+  .role {
+    font-size: 12px;
+  }
+}
+
+/* --- 320px (Very Small Phones) --- */
+@media (max-width: 320px) {
+  .modal-overlay {
+    padding: 8px;
+    height: auto;
+  }
+  .modal-content {
+    width: calc(100% - 16px);
+    margin-top: 70px;
+    padding: 10px;
+    font-size: 0.9rem; /* text fits small screens */
+    border-radius: 8px;
+    scale: 0.9;
+  }
+
+  .modal-doctor-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .avatar {
+    width: 55px;
+    height: 55px;
+  }
+
+  .doctor-info h3 {
+    font-size: 14px;
+  }
+
+  .role {
+    font-size: 11px;
+  }
+
+  .doctor-card {
+    margin-left: 50px;
+
+  }
+}
+
+.loading-state,
+.error-state,
+.no-results,
+.submitting-state {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.1rem;
+}
+
+.error-state button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.error-state button:hover {
+  background: #2563eb;
+}
+
+.has-appointment {
+  background: #f59e0b !important;
+}
+
+.confirm-btn:disabled,
+.cancel-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.cancel-btn {
+  background: #ef4444 !important;
+  margin-top: 0.5rem;
+}
+
+.cancel-btn:hover:not(:disabled) {
+  background: #dc2626 !important;
+}
+
+.date-message {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #10b981;
+}
+
+.date-message.error {
+  color: #ef4444;
+}
+
+.no-slots {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #f59e0b;
+}
